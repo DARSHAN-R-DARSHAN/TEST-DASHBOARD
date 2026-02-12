@@ -12,7 +12,7 @@ function Header({ darkMode, setDarkMode }: HeaderProps) {
         className="theme-toggle"
         onClick={() => setDarkMode(!darkMode)}
       >
-        {darkMode ? "☀ Light Mode" : "🌙 Dark Mode"}
+        {darkMode ? "☀️" : "🌙"}
       </button>
     </div>
   );
