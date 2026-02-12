@@ -1,0 +1,266 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}
+
+/* =========================
+   THEME VARIABLES
+========================= */
+
+.app {
+  --bg: #f4f6f9;
+  --sidebar-bg: #111827;
+  --card-bg: #ffffff;
+  --card-soft: #f3f4f6;
+  --text: #111827;
+  --border: #e5e7eb;
+  --primary: #3b82f6;
+}
+
+.app.dark {
+  --bg: #0f172a;
+  --sidebar-bg: #0b1220;
+  --card-bg: #1e293b;
+  --card-soft: #273449;
+  --text: #f8fafc;
+  --border: #334155;
+  --primary: #3b82f6;
+}
+
+/* =========================
+   LAYOUT
+========================= */
+
+.app-container {
+  display: flex;
+  height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+  width: 220px;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.sidebar-content {
+  flex: 1;
+}
+
+.logo {
+  margin-bottom: 30px;
+  transition: opacity 0.2s ease;
+}
+
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.85;
+  transition: 0.2s ease;
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.icon {
+  font-size: 18px;
+  width: 24px;
+  text-align: center;
+}
+
+.label {
+  transition: opacity 0.2s ease;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  height: 60px;
+  background: var(--card-bg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* =========================
+   SEARCH + FILTER BAR
+========================= */
+
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+}
+
+.search-input {
+  width: 280px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  outline: none;
+  background: var(--card-bg);
+  color: var(--text);
+  transition: 0.2s ease;
+}
+
+.search-input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+}
+
+/* =========================
+   FILTER BUTTONS
+========================= */
+
+.filter-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.filter-btn {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.2s ease;
+  font-size: 13px;
+}
+
+.filter-btn:hover {
+  transform: translateY(-2px);
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* =========================
+   BOARD
+========================= */
+
+.board {
+  display: flex;
+  gap: 20px;
+  padding: 0 20px 20px 20px;
+  overflow-x: auto;
+}
+
+.column {
+  background: var(--card-bg);
+  border-radius: 12px;
+  padding: 15px;
+  min-width: 260px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: background 0.3s ease;
+}
+
+.column h3 {
+  margin-bottom: 15px;
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card {
+  background: var(--card-soft);
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(6px);
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--card-bg);
+  padding: 24px;
+  border-radius: 12px;
+  width: 340px;
+  z-index: 1001;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+  animation: fadeIn 0.2s ease;
+  color: var(--text);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translate(-50%, -45%); }
+  to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+.theme-toggle {
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
