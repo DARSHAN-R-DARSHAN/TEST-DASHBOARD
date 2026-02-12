@@ -60,6 +60,29 @@ function KanbanBoard({ tests }: Props) {
         </div>
       </div>
 
+      <div className="analytics">
+        <div className="metric">
+            <h4>Total Tests</h4>
+            <p>{tests.length}</p>
+        </div>
+
+        <div className="metric">
+            <h4>Passed</h4>
+            <p>{tests.filter(t => t.status === "passed").length}</p>
+        </div>
+
+        <div className="metric">
+            <h4>Failed</h4>
+            <p>{tests.filter(t => t.status === "failed").length}</p>
+        </div>
+
+        <div className="metric">
+            <h4>Skipped</h4>
+            <p>{tests.filter(t => t.status === "skipped").length}</p>
+        </div>
+        </div>
+
+
       <div className="board">
         <KanbanColumn title="Passed" tests={passed} />
         <KanbanColumn title="Failed" tests={failed} />
